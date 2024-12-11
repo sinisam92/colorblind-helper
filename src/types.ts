@@ -1,4 +1,6 @@
+export type ColorBlindnessType = "protanopia" | "deuteranopia" | "tritanopia" | "normal";
+
 export type ColorProfile = {
-  value: "protanopia" | "deuteranopia" | "tritanopia" | "normal";
+  value: ColorBlindnessType;
   label: string;
 };

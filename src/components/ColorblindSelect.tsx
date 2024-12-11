@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Check, ChevronDown } from "lucide-react";
-import { ColorProfile } from "./types";
+import { ColorProfile } from "../types";
 
 const visionTypes: ColorProfile[] = [
   { value: "normal", label: "Normal Vision" },
@@ -11,7 +11,7 @@ const visionTypes: ColorProfile[] = [
 
 const SimpleColorblindSelect = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedVision, setSelectedVision] = useState(visionTypes[0]);
+  const [selectedVision, setSelectedVision] = useState<ColorProfile>(visionTypes[0]);
 
   console.log("selectedVision", selectedVision);
 

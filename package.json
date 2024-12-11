@@ -1,7 +1,7 @@
 {
   "name": "colorblind-helper",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "start": "./start.sh",
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
+    "@types/chrome": "^0.0.287",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
