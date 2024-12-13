@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Check, ChevronDown } from "lucide-react";
-import { ColorProfile } from "../types";
+import { ColorProfile } from "../../types/types";
 
 const visionTypes: ColorProfile[] = [
   { value: "normal", label: "Normal Vision" },

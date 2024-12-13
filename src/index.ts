@@ -1,1 +1,1 @@
-export { extractColors } from "./services/colorsExtractor";
+// export { extractColors } from "./services/colorsExtractor";
