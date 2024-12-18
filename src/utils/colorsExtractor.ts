@@ -43,20 +43,22 @@ export function extractColors(): ColorInfo[] {
       if (color && !isExcludedColor(color)) {
         colorSet.add(color);
 
-        if (element instanceof HTMLElement) {
-          if (color === "rgb(37, 99, 235)") {
-            console.log("Matched Color:", color, "in Element:", element);
-            element.style.backgroundColor = "red";
-            element.style.color = "green";
+        // TEST for inserting color as style
 
-            const svgElement = element.querySelector("svg");
-            if (svgElement instanceof SVGElement) {
-              const strokeValue = svgElement.getAttribute("stroke");
-              console.log("SVG Element:", svgElement, "Current Stroke:", strokeValue);
-              if (strokeValue) svgElement.setAttribute("stroke", "white");
-            }
-          }
-        }
+        // if (element instanceof HTMLElement) {
+        //   if (color === "rgb(37, 99, 235)") {
+        //     console.log("Matched Color:", color, "in Element:", element);
+        //     element.style.backgroundColor = "red";
+        //     element.style.color = "green";
+
+        //     const svgElement = element.querySelector("svg");
+        //     if (svgElement instanceof SVGElement) {
+        //       const strokeValue = svgElement.getAttribute("stroke");
+        //       console.log("SVG Element:", svgElement, "Current Stroke:", strokeValue);
+        //       if (strokeValue) svgElement.setAttribute("stroke", "white");
+        //     }
+        //   }
+        // }
 
         // Add color and element to the map
         if (!colorAndLocationMap.has(color)) {

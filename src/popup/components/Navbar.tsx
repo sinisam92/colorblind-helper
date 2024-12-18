@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
             onClick={() => setPage("home")}
             className="text-blue-500 hover:text-blue-700 w-fit"
           >
-            <span>
+            <span className="flex justify-center items-center gap-x-2">
               <MoveLeft />
               Back to Home
             </span>
