@@ -10,14 +10,11 @@ interface ColorInfo {
 }
 
 export function extractColors(): ColorInfo[] {
-  console.log("Extracting Colors...");
-
   const colorSet = new Set<string>();
   const colorAndLocationMap = new Map<string, ElementInfo[]>();
   const excludedColors = new Set([
     "transparent",
     "rgba(0, 0, 0, 1)",
-    "rgba(0, 0, 0, 0.8)",
     "rgba(0, 0, 0, 0)",
     "rgba(255, 255, 255, 1)",
     "rgb(255, 255, 255)",
@@ -87,30 +84,3 @@ export function extractColors(): ColorInfo[] {
     elements,
   }));
 }
-
-// // Assign function to `window`
-// window.extractColors = extractColors;
-
-// // Usage Example
-// console.log("Extracted Colors:", extractColors());
-
-// export function extractColors() {
-//   console.log("Extracting Colors...");
-
-//   const colorSet = new Set<string>();
-//   const relevantProperties = ["color", "background-color", "border-color"];
-//   const excludedElements = "script, link, meta, title, noscript, template, head, style";
-
-//   const elements = document.querySelectorAll(`*:not(${excludedElements})`);
-//   elements.forEach((element) => {
-//     const styles = window.getComputedStyle(element);
-//     relevantProperties.forEach((prop) => {
-//       const color = styles.getPropertyValue(prop);
-//       if (color && !colorSet.has(color)) {
-//         colorSet.add(color);
-//       }
-//     });
-//   });
-
-//   return Array.from(colorSet);
-// }
