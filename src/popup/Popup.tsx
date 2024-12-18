@@ -1,31 +1,33 @@
 import React, { useState } from "react";
+import { Page } from "../../types/types";
+import ColorExtractor from "./pages/ColorExtractor";
+import ColorAccessibility from "./pages/ColorAccessibility";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const Popup: React.FC = () => {
-  const [colors, setColors] = useState<string[]>([]);
+  const [currentPage, setCurrentPage] = useState<Page>("home");
 
-  const handleExtractColors = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs[0]?.id) {
-        chrome.tabs.sendMessage(tabs[0].id, { type: "extractColors" }, (response) => {
-          if (response?.colors) {
-            setColors(response.colors);
-          }
-        });
-      }
-    });
+  const renderPage = () => {
+    switch (currentPage) {
+      case "home":
+        return <Home setPage={setCurrentPage} />;
+      case "accessibility":
+        return <ColorAccessibility />;
+      case "extractor":
+        return <ColorExtractor />;
+      case "about":
+        return <About />;
+    }
   };
 
   return (
-    <div className="w-full">
-      <h1 className="text-2xl text-[#1F2937] font-bold">Color Extractor</h1>
-      <button onClick={handleExtractColors}>Extract Colors</button>
-      <ul>
-        {colors.map((color, index) => (
-          <li key={index} style={{ color }}>
-            {color}
-          </li>
-        ))}
-      </ul>
+    <div className="w-[400px] h-[500px] bg-white flex flex-col">
+      <Navbar currentPage={currentPage} setPage={setCurrentPage} />
+      <main className="flex-1 p-4 overflow-y-auto">{renderPage()}</main>
+      <Footer />
     </div>
   );
 };
