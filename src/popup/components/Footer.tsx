@@ -5,7 +5,8 @@ const Footer: React.FC = () => {
     <div className="w-full text-center">
       {" "}
       <p>
-        &copy; {new Date().getFullYear()} | made with ❤️ by{" "}
+        {/* with ❤️  */}
+        &copy; {new Date().getFullYear()} | made by{" "}
         <a
           href="https://yourwebsite.com"
           target="_blank"
