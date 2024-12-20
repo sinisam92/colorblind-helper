@@ -8,4 +8,4 @@ export type ColorProfile = {
   label: string;
 };
 
-export type Page = "home" | "accessibility" | "extractor" | "adjuster" | "about";
+export type Page = "home" | "accessibility" | "webpageColors" | "adjuster" | "about";

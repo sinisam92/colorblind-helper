@@ -9,7 +9,7 @@ interface ColorInfo {
   elements: ElementInfo[];
 }
 
-export function extractColors(): ColorInfo[] {
+export const extractColors = (): ColorInfo[] => {
   const colorSet = new Set<string>();
   const colorAndLocationMap = new Map<string, ElementInfo[]>();
   const excludedColors = new Set([
@@ -19,20 +19,26 @@ export function extractColors(): ColorInfo[] {
     "rgba(255, 255, 255, 1)",
     "rgb(255, 255, 255)",
     "rgb(0, 0, 0)",
+    "rgba(0, 0, 0, 0.8)",
   ]);
   const relevantProperties = [
     "color",
     "background-color",
-    "border-color",
+    "border-top-color",
+    "border-right-color",
+    "border-bottom-color",
+    "border-left-color",
     "outline-color",
     "text-decoration-color",
+    "fill",
+    "stroke",
   ];
   const excludedElements = "script, link, meta, title, noscript, template, head, style";
   const allElements = document.querySelectorAll(`*:not(${excludedElements})`);
 
-  function isExcludedColor(color: string): boolean {
+  const isExcludedColor = (color: string): boolean => {
     return excludedColors.has(color);
-  }
+  };
 
   for (const element of allElements) {
     const styles = window.getComputedStyle(element);
@@ -43,29 +49,11 @@ export function extractColors(): ColorInfo[] {
       if (color && !isExcludedColor(color)) {
         colorSet.add(color);
 
-        // TEST for inserting color as style
-
-        // if (element instanceof HTMLElement) {
-        //   if (color === "rgb(37, 99, 235)") {
-        //     console.log("Matched Color:", color, "in Element:", element);
-        //     element.style.backgroundColor = "red";
-        //     element.style.color = "green";
-
-        //     const svgElement = element.querySelector("svg");
-        //     if (svgElement instanceof SVGElement) {
-        //       const strokeValue = svgElement.getAttribute("stroke");
-        //       console.log("SVG Element:", svgElement, "Current Stroke:", strokeValue);
-        //       if (strokeValue) svgElement.setAttribute("stroke", "white");
-        //     }
-        //   }
-        // }
-
-        // Add color and element to the map
         if (!colorAndLocationMap.has(color)) {
           colorAndLocationMap.set(color, []);
         }
         const elementInfo: ElementInfo = {
-          tagName: element.tagName,
+          tagName: element.tagName.toLowerCase(),
           className: element instanceof HTMLElement ? element.className : "",
           id: element.id,
         };
@@ -85,4 +73,4 @@ export function extractColors(): ColorInfo[] {
     color,
     elements,
   }));
-}
+};

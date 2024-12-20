@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Page } from "../../types/types";
-import ColorExtractor from "./pages/ColorExtractor";
 import ColorAccessibility from "./pages/ColorAccessibility";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import WebpageColors from "./pages/WebpageColors";
 
 const Popup: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>("home");
@@ -16,8 +16,8 @@ const Popup: React.FC = () => {
         return <Home setPage={setCurrentPage} />;
       case "accessibility":
         return <ColorAccessibility />;
-      case "extractor":
-        return <ColorExtractor />;
+      case "webpageColors":
+        return <WebpageColors />;
       case "about":
         return <About />;
     }

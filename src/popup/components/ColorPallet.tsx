@@ -1,17 +1,31 @@
 import React from "react";
 import convert from "color-convert";
 import { Color } from "../../../types/types";
+import { getContrastColor, notApplicableColor } from "../../utils/helperFunctions";
 
 interface ColorPalletProps {
   mostCommonColors: Color[];
+  numColors?: number;
+  columns?: number;
 }
 
-const ColorPallet: React.FC<ColorPalletProps> = ({ mostCommonColors }) => {
+const ColorPallet: React.FC<ColorPalletProps> = ({
+  mostCommonColors,
+  numColors,
+  columns,
+}) => {
+  const displayedColors = mostCommonColors
+    .filter((color) => !notApplicableColor(convert.hex.rgb(color.color)))
+    .slice(0, numColors);
+
+  const columnClass =
+    columns === 1 ? "grid-cols-1" : columns === 2 ? "grid-cols-2" : "grid-cols-3";
   return (
-    <div className="mt-6">
-      <h2 className="text-xl font-medium mb-4 ">Dominant Colors</h2>
-      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {mostCommonColors.map((color, index) => {
+    <div className="mt-2">
+      <ul className={`grid ${columnClass} md:grid-cols-3 lg:grid-cols-4 gap-4`}>
+        {displayedColors.map((color, index) => {
+          const contrastedColor = getContrastColor(color.color);
+
           const rgbValues: [number, number, number] = color.color
             .match(/\d+/g)
             ?.map(Number) as [number, number, number];
@@ -20,17 +34,14 @@ const ColorPallet: React.FC<ColorPalletProps> = ({ mostCommonColors }) => {
             <li
               key={index}
               className={`flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md transition-transform hover:scale-105`}
-              style={{ backgroundColor: color.color }}
+              style={{
+                backgroundColor: color.color,
+              }}
             >
-              <div
-                className={`w-16 h-16 rounded-full shadow-inner mb-2 `}
-                aria-label={`Color sample: ${color.color}`}
-              />
-              <ul className="text-sm font-mono text-gray-600 dark:text-gray-400">
+              <div aria-label={`Color sample: ${color.color}`} />
+              <ul className="text-sm font-mono" style={{ color: contrastedColor }}>
                 <li>Color: {convert.rgb.keyword(rgbValues)}</li>
                 <li>RGB: {color.color}</li>
-                <li>HSL: {convert.rgb.hsl(rgbValues)}</li>
-                <li>HEX: {convert.rgb.hex(rgbValues)}</li>
               </ul>
             </li>
           );

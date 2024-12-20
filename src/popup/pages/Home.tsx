@@ -16,7 +16,7 @@ const Home: React.FC<HomeProps> = ({ setPage }) => {
           Color Accessibility
         </button>
         <button
-          onClick={() => setPage("extractor")}
+          onClick={() => setPage("webpageColors")}
           className="bg-white border border-black p-4 rounded-lg hover:bg-black hover:text-white transition-colors"
         >
           Color Extractor

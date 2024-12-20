@@ -10,9 +10,9 @@ type ColorBlindCondition = "normal" | "protanopia" | "deuteranopia" | "tritanopi
 
 const visionTypes: ColorProfile[] = [
   { value: "normal", label: "Normal Vision" },
-  { value: "protanopia", label: "Protanopia (Red-Blind)" },
-  { value: "deuteranopia", label: "Deuteranopia (Green-Blind)" },
-  { value: "tritanopia", label: "Tritanopia (Blue-Blind)" },
+  { value: "protanopia", label: "Protanopia (No Red)" },
+  { value: "deuteranopia", label: "Deuteranopia (No Green)" },
+  { value: "tritanopia", label: "Tritanopia (No Blue)" },
 ];
 
 const ColorblindSelect: React.FC = () => {

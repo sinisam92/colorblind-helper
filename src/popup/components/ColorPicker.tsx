@@ -6,7 +6,7 @@ const ColorPicker: React.FC = () => {
   const [color, setColor] = useState("rgb(255, 255, 255)");
 
   return (
-    <div className="w-full grid place-items-center">
+    <div className="w-full grid place-items-center mt-2">
       <div>
         <RgbaStringColorPicker color={color} onChange={setColor} />
         <div
