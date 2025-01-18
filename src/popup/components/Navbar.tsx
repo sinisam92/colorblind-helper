@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Page } from "../../../types/types";
 import { MoveLeft } from "lucide-react";
 
@@ -7,7 +7,7 @@ interface NavbarProps {
   setPage: (page: Page) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
+const Navbar: FC<NavbarProps> = ({ currentPage, setPage }) => {
   return (
     <nav className="bg-white shadow-md p-4">
       <div className="flex justify-between items-center">

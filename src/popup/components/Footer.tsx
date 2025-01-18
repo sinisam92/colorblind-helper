@@ -1,11 +1,10 @@
-import React from "react";
+import { FC } from "react";
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   return (
     <div className="w-full text-center">
       {" "}
       <p>
-        {/* with ❤️  */}
         &copy; {new Date().getFullYear()} | made by{" "}
         <a
           href="https://yourwebsite.com"

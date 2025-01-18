@@ -1,11 +1,11 @@
-import React from "react";
+import { FC } from "react";
 import { Page } from "../../../types/types";
 
 interface HomeProps {
   setPage: (page: Page) => void;
 }
 
-const Home: React.FC<HomeProps> = ({ setPage }) => {
+const Home: FC<HomeProps> = ({ setPage }) => {
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 gap-4">

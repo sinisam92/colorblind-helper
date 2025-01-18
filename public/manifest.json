@@ -6,12 +6,12 @@
   "permissions": ["activeTab", "scripting", "storage"],
   "action": {
     "default_popup": "src/popup/index.html",
-    "default_icon": "icons/eye-34.png"
+    "default_icon": "icons/logo-color Small.png"
   },
-  "devtools_page": "index.html",
+  "devtools_page": "src/popup/index.html",
   "icons": {
-    "34": "icons/eye-34.png",
-    "128": "icons/eye-128.png"
+    "34": "icons/logo-color Small.png",
+    "128": "icons/logo-color Small.png"
   },
   "content_scripts": [
     {

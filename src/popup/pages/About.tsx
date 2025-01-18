@@ -1,6 +1,6 @@
-import React from "react";
+import { FC } from "react";
 
-const About: React.FC = () => {
+const About: FC = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">About This Extension</h1>

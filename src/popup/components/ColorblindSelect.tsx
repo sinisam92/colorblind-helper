@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import { Check, ChevronDown } from "lucide-react";
 
 interface ColorProfile {
@@ -15,15 +15,12 @@ const visionTypes: ColorProfile[] = [
   { value: "tritanopia", label: "Tritanopia (No Blue)" },
 ];
 
-const ColorblindSelect: React.FC = () => {
+const ColorblindSelect: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedVision, setSelectedVision] = useState<ColorProfile>(visionTypes[0]);
 
   useEffect(() => {
     chrome.storage.sync.get("visionType", (data) => {
-      console.log("data from storage", data);
-      console.log("data visionType", data.visionType);
-
       if (data.visionType) {
         setSelectedVision(
           visionTypes.find((type) => type.value === data.visionType) || visionTypes[0]

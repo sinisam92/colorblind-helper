@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import { Page } from "../../types/types";
 import ColorAccessibility from "./pages/ColorAccessibility";
 import About from "./pages/About";
@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WebpageColors from "./pages/WebpageColors";
 
-const Popup: React.FC = () => {
+const Popup: FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>("home");
 
   const renderPage = () => {

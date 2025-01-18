@@ -52,3 +52,22 @@ export const notApplicableColor = (
 
   return difference <= grayscaleThreshold || isLight;
 };
+
+export const normalizeColor = (color: string): string => {
+  if (color.startsWith("rgb")) {
+    const rgbaMatch = color.match(/rgba?\((\d+), (\d+), (\d+)(?:, ([\d.]+))?\)/);
+    if (rgbaMatch) {
+      const [, r, g, b, a] = rgbaMatch;
+      if (!a || parseFloat(a) === 1) {
+        return `rgb(${r}, ${g}, ${b})`;
+      }
+    }
+  } else if (color.startsWith("#")) {
+    const hex = color.slice(1);
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+  return color;
+};
