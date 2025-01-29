@@ -1,7 +1,7 @@
 # Colors Helper
 
 <div style="text-align: center;">
-    <img src="./public/logo-color.svg" alt="Project Logo" width="200" />
+    <img src="./public/icons/logo-color.svg" alt="Project Logo" width="200" />
 </div>
 ## Table of Contents
 
